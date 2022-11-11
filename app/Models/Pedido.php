@@ -19,10 +19,6 @@ class Pedido extends Model
     public function pedidos(){
         return $this->hasMany('App\Models\Produto');
     }
-    
-    public function clientes(){
-        return $this->belongsTo('App\Models\Cliente');
-    }
 
     public function entregas(){
         return $this->hasOne('App\Models\Entrega');

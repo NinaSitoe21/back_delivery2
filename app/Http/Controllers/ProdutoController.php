@@ -75,8 +75,10 @@ class ProdutoController extends Controller
             $produto->imagem = $imageName;
         }
         
-        return $produto->save();
-
+        if(!$produto->save()){
+            return response(['mensagem' => ['Ocorreu um erro ao registar produto']], 500);
+        }
+        return response(['produto' => $produto], 201);
     }
 
     /**
@@ -96,9 +98,9 @@ class ProdutoController extends Controller
             ->where('estado', 0)
             ->get();
 
-            return $produto;
+            return response(['produto' => $produto]);
         }else{
-            throw new Exception(404, 'Produto não encontrado!');
+            return response(['mensagem' => ['Produto não encontrado!']], 404);
         }
     }
 

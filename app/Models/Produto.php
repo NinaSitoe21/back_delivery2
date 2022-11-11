@@ -22,6 +22,6 @@ class Produto extends Model
     }
 
     public function Produtos(){
-        return $this->belongsToMany('App\Models\Pedido');
+        return $this->belongsTo('App\Models\Pedido');
     }
 }
